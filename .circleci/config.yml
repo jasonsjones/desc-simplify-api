@@ -7,7 +7,7 @@ jobs:
     build:
         docker:
             # specify the version you desire here
-            - image: circleci/node:8.11.3-stretch-browsers
+            - image: circleci/node:lts
 
         steps:
             - checkout
@@ -32,13 +32,14 @@ jobs:
     deploy:
         docker:
             # specify the version you desire here
-            - image: circleci/node:8.11.3-stretch-browsers
+            - image: circleci/node:lts
         steps:
             - checkout
             - run:
                   name: Deploy master to Heroku
                   command: |
-                      git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+                      # git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+                      echo "this will push to heroku on success"
 workflows:
     version: 2
     build-deploy:
